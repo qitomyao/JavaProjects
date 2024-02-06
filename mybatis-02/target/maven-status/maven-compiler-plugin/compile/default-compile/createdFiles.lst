@@ -1,0 +1,4 @@
+au\net\tomtech\mapper\EmpMapper.class
+au\net\tomtech\pojo\User.class
+au\net\tomtech\mapper\UserMapper.class
+au\net\tomtech\pojo\Emp.class

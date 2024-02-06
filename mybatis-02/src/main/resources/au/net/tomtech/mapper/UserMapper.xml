@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+mapper根标签, namespace写上对应的是哪一个接口的映射关系
+select标签, 专门对应查询方法
+    id, 标记唯一的方法名
+    resultType, 返回结果对象, 如果是集合如List, 不用写集合, 写里面的对象 （写包名+类名）
+-->
+<mapper namespace="au.net.tomtech.mapper.UserMapper"> <!--包名.接口名-->
+    <select id="selectAll" resultType="User">
+        select * from user; <!-- SQL语句 -->
+    </select>
+</mapper>
+
+
