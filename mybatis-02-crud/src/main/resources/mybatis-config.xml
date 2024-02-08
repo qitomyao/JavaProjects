@@ -6,16 +6,20 @@
 	<settings>
         <!--在控制台显示SQL语句-->
         <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!--开启全局驼峰命名映射-->
+<!--        <setting name="mapUnderscoreToCamelCase" value="true"/>-->
     </settings>
-
+    
     <!--
-        typeAliases给类名起别名
-        type：原本的包名+类名
-        alias: 起的别名
+    typeAliases给类名起别名
+        typeAlias 给单个类配置别名,太麻烦了，每一个新增的类都得配置，不方便
+            type:原本的包名+类名
+            alias:起的别名
     -->
     <typeAliases>
-    <!--  <typeAlias type="au.net.tomtech.pojo.User" alias="User" />-->
-        <package name="au.net.tomtech.pojo"/>
+<!--        <typeAlias type="com.itheima.pojo.User" alias="User"/>-->
+<!--        <typeAlias type="com.itheima.pojo.Emp" alias="Emp"/>-->
+        <package name="com.itheima.pojo"/>
     </typeAliases>
 	
     <environments default="development">
@@ -32,10 +36,8 @@
     </environments>
 
     <mappers>
-    <!--  <mapper resource="UserMapper.xml"/> &lt;!&ndash;接口映射文件的位置&ndash;&gt;-->
-    <!--  <mapper resource="EmpMapper.xml"/>-->
-        <package name="au.net.tomtech.mapper"/> <!-- 扫包 -->
+<!--        <mapper resource="UserMapper.xml"/>-->
+<!--        <mapper resource="EmpMapper.xml"/>-->
+        <package name="com.itheima.mapper"/> 
     </mappers>
 </configuration>
-
-

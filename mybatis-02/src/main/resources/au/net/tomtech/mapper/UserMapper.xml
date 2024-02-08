@@ -12,6 +12,45 @@ select标签, 专门对应查询方法
     <select id="selectAll" resultType="User">
         select * from user; <!-- SQL语句 -->
     </select>
+    <!--
+        #{变量} select * from user where id = ?; ?表示占位符，是预编译的效果，不会有SQL注入的问题
+        ${变量} select * from user where id = ${id}; 直接拼接拼接字符串, sql注入的问题
+        parameterType 表示参数类型, 基本上不写
+        特殊字符需要被处理
+            转义的字符 - CD转义符 <![CDATA[ SQL语句 ]]>
+    -->
+    <select id="selectById" resultType="User">
+        <![CDATA[
+        select * from user where id = #{id};
+        ]]>
+    </select>
+
+    <delete id ="deleteById">
+        delete from user where id = #{id};
+    </delete>
+    <!--
+    update标签:编写修改的操作语句
+    user对象作为参数, myBatis可以解析这个对象, 直接使用里面的成员变量
+    -->
+    <update id="update">
+        update user set username=#{username}, birthday=#{birthday}, sex=#{sex},
+                        address=#{address} where id = #{id};
+    </update>
+
+    <!--
+        insert标签
+        user对象作为参数, myBatis可以解析这个对象, 直接使用里面的成员变量
+        useGeneratedKeys="true" 要获取数据库返回的主键值
+        keyProperty="id" 把获取到的主键值放回原来的对象的id属性里面
+    -->
+    <insert id="add" useGeneratedKeys="true" keyProperty="id">
+        insert into user values (null, #{username}, #{birthday}, #{sex}, #{address});
+        <!--  id是自增量,因此使用Null -->
+    </insert>
+
+    <select id="selectByCondition" resultType="user">
+        select * from user where username like #{username} and sex =#{sex}
+    </select>
 </mapper>
 
 
