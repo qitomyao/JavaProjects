@@ -23,6 +23,12 @@ public interface UserMapper {
     //6. 使用多参数
     //方案五：使用Map键值对传参，要求键和参数位一致
     List<User> selectByCondition(Map<String, Object> map);
+
+    // 8.if条件判断去根据用户名和性别查询用户信息
+    List<User> selectByIf(@Param("username") String username,
+                          @Param("sex") String sex);
+    //9.根据if判断结果修改用户数据
+    void updateByIf(User user);
 }
 
 

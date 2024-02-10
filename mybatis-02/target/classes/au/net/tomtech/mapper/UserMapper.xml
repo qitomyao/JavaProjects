@@ -51,6 +51,48 @@ select标签, 专门对应查询方法
     <select id="selectByCondition" resultType="user">
         select * from user where username like #{username} and sex =#{sex}
     </select>
+
+    <!--
+        if标签:做条件判断
+        test 属性: 判断条件, 如果为true, 则拼接里面的SQL
+                  判断的参数不用带上#{}, 直接写参数名或者说对象的成员变量
+        where 标签 有条件的时候充当where关键字, 还能去掉多余的and或者or 没有查询条件的时候自动消失
+
+    -->
+    <select id="selectByIf" resultType="user">
+        select * from user
+        <where>
+            <if test="username != null and username != ''">
+                username like #{username}
+            </if>
+            <if test="sex!=null and sex !=''">
+                and sex = #{sex};
+            </if>
+        </where>
+    </select>
+    <!--
+    根据if判断结果来处理修改的参数
+    如果只有if条件判断语句的话, 当最后一个参数没有输入, 会出现多余的逗号
+    使用set标签, 可以去掉多余的逗号
+    -->
+    <update id="updateByIf">
+        update user
+        <set>
+            <if test="username!=null and username!=''">
+                username = #{username},
+            </if>
+            <if test="birthday!=null">
+                birthday = #{birthday},
+            </if>
+            <if test="sex!=null and sex!=''">
+                sex=#{sex},
+            </if>
+            <if test="address!=null and address!=''">
+                address=#{address}
+            </if>
+        </set>
+        where id = #{id};
+    </update>
 </mapper>
 
 
