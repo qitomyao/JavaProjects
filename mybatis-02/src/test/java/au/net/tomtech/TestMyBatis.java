@@ -140,7 +140,68 @@ public class TestMyBatis {
         sqlSession.close();
     }
 
+    @Test
+    public void test09() throws IOException{
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession sqlSession=sqlSessionFactory.openSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        //生成的SQL语句
+        //==> Preparing: delete from user where id in ( ? , ? , ? , ? )
+        //==> Parameters: 47(Integer), 49(Integer), 50(Integer), 51(Integer)
+        userMapper.deleteByArray(new int[]{47, 49, 50, 51});
+        sqlSession.commit();
+        sqlSession.close();
+    }
 
+    @Test
+    public void test10() throws IOException{
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession sqlSession=sqlSessionFactory.openSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        List<User> userList = userMapper.selectBySex(1);
+        userList.forEach(System.out::println);
+        sqlSession.close();
+    }
+
+    @Test
+    public void test11() throws IOException{
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession sqlSession=sqlSessionFactory.openSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        List<User> userList = userMapper.selectBySQL();
+        userList.forEach(System.out::println);
+        sqlSession.close();
+    }
+
+    @Test
+    public void test12() throws IOException{
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession sqlSession=sqlSessionFactory.openSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        List<String> names = userMapper.selectField("旧厂街");
+        names.forEach(System.out::println);
+        sqlSession.close();
+    }
+
+    @Test
+    public void test13() throws IOException{
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession sqlSession=sqlSessionFactory.openSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        List<String> names = userMapper.selectField("旧厂街");
+        names.forEach(System.out::println);
+        sqlSession.close();
+    }
 }
 
 

@@ -29,6 +29,21 @@ public interface UserMapper {
                           @Param("sex") String sex);
     //9.根据if判断结果修改用户数据
     void updateByIf(User user);
+
+    //10. 批量删除用户 框架默认数组的变量名为array,如果不想使用可以自己设置注解
+    void deleteByArray(@Param("ids") int[] ids);
+
+    //11. 根据页面传入的性别查询用户信息 前端可能传入的是 0 代表男 1 代表女
+    List<User> selectBySex(int sex);
+
+    //12. 查询抽取的SQL
+    List<User> selectBySQL();
+
+    //13. 查询某个字段
+    List<String> selectField(@Param("address") String address);
+
+    //14. 查询某个字段
+    List<String> selectField2(@Param("address") String address);
 }
 
 

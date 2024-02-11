@@ -235,70 +235,70 @@ public class TestMyBatis {
         sqlSession.close();
     }
 
-//    @Test
-//    public void test09() throws IOException {
-//        // 测试一下MyBatis框架的搭建情况
-//        // 1.标记mybatis的配置环境
-//        String resource = "mybatis-config.xml";
-//        // 2.加载配置环境的信息
-//        InputStream inputStream = Resources.getResourceAsStream(resource);
-//        // 3.根据配置信息，生成sqlSessionFactory对象，相当于连接池
-//        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-//        // 4.从连接池获取连接
-//        // 4.1 可以设置自动提交openSession(true);
-//        // SqlSession sqlSession = sqlSessionFactory.openSession(true);
-//        SqlSession sqlSession = sqlSessionFactory.openSession();
-//        // 5.获取执行sql语句的对象
-//        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-//        // 6.调用方法，执行SQL语句
-//        // userMapper.deleteById2(4);
-//        userMapper.deleteByArray(new int[]{6,7,10});
-//        // 6.1 需要手动提交事务
-//        sqlSession.commit();
-//        // 7.释放资源
-//        sqlSession.close();
-//    }
-//
-//    @Test
-//    public void test10() throws IOException {
-//        // 测试一下MyBatis框架的搭建情况
-//        // 1.标记mybatis的配置环境
-//        String resource = "mybatis-config.xml";
-//        // 2.加载配置环境的信息
-//        InputStream inputStream = Resources.getResourceAsStream(resource);
-//        // 3.根据配置信息，生成sqlSessionFactory对象，相当于连接池
-//        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-//        // 4.从连接池获取连接
-//        SqlSession sqlSession = sqlSessionFactory.openSession();
-//        // 5.获取执行sql语句的对象
-//        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-//        // 6.调用方法，执行SQL语句
-//        // select * from user WHERE sex = '女' otherwise
-//        // select * from user WHERE sex = '男' when sex == 0
-//        // select * from user WHERE sex = '女'
-//        List<User> userList = userMapper.selectBySex(1);
-//        userList.forEach(System.out::println);
-//        // 7.释放资源
-//        sqlSession.close();
-//    }
-//
-//    @Test
-//    public void test11() throws IOException {
-//        // 测试一下MyBatis框架的搭建情况
-//        // 1.标记mybatis的配置环境
-//        String resource = "mybatis-config.xml";
-//        // 2.加载配置环境的信息
-//        InputStream inputStream = Resources.getResourceAsStream(resource);
-//        // 3.根据配置信息，生成sqlSessionFactory对象，相当于连接池
-//        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-//        // 4.从连接池获取连接
-//        SqlSession sqlSession = sqlSessionFactory.openSession();
-//        // 5.获取执行sql语句的对象
-//        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-//        // 6.调用方法，执行SQL语句
-//        List<User> userList = userMapper.selectBySQL();
-//        userList.forEach(System.out::println);
-//        // 7.释放资源
-//        sqlSession.close();
-//    }
+    @Test
+    public void test09() throws IOException {
+        // 测试一下MyBatis框架的搭建情况
+        // 1.标记mybatis的配置环境
+        String resource = "mybatis-config.xml";
+        // 2.加载配置环境的信息
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        // 3.根据配置信息，生成sqlSessionFactory对象，相当于连接池
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        // 4.从连接池获取连接
+        // 4.1 可以设置自动提交openSession(true);
+        // SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        // 5.获取执行sql语句的对象
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        // 6.调用方法，执行SQL语句
+        // userMapper.deleteById2(4);
+        userMapper.deleteByArray(new int[]{6,7,10});
+        // 6.1 需要手动提交事务
+        sqlSession.commit();
+        // 7.释放资源
+        sqlSession.close();
+    }
+
+    @Test
+    public void test10() throws IOException {
+        // 测试一下MyBatis框架的搭建情况
+        // 1.标记mybatis的配置环境
+        String resource = "mybatis-config.xml";
+        // 2.加载配置环境的信息
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        // 3.根据配置信息，生成sqlSessionFactory对象，相当于连接池
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        // 4.从连接池获取连接
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        // 5.获取执行sql语句的对象
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        // 6.调用方法，执行SQL语句
+        // select * from user WHERE sex = '女' otherwise
+        // select * from user WHERE sex = '男' when sex == 0
+        // select * from user WHERE sex = '女'
+        List<User> userList = userMapper.selectBySex(1);
+        userList.forEach(System.out::println);
+        // 7.释放资源
+        sqlSession.close();
+    }
+
+    @Test
+    public void test11() throws IOException {
+        // 测试一下MyBatis框架的搭建情况
+        // 1.标记mybatis的配置环境
+        String resource = "mybatis-config.xml";
+        // 2.加载配置环境的信息
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        // 3.根据配置信息，生成sqlSessionFactory对象，相当于连接池
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        // 4.从连接池获取连接
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        // 5.获取执行sql语句的对象
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        // 6.调用方法，执行SQL语句
+        List<User> userList = userMapper.selectBySQL();
+        userList.forEach(System.out::println);
+        // 7.释放资源
+        sqlSession.close();
+    }
 }
