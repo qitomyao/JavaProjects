@@ -1,8 +1,10 @@
 package au.net.tomtech;
 
 import au.net.tomtech.mapper.EmpMapper;
+import au.net.tomtech.mapper.OrderMapper;
 import au.net.tomtech.mapper.UserMapper;
 import au.net.tomtech.pojo.Emp;
+import au.net.tomtech.pojo.Order;
 import au.net.tomtech.pojo.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -141,67 +143,25 @@ public class TestMyBatis {
     }
 
     @Test
-    public void test09() throws IOException{
+    public void test09() throws IOException {
+        // 测试一下MyBatis框架的搭建情况
+        // 1.标记mybatis的配置环境
         String resource = "mybatis-config.xml";
+        // 2.加载配置环境的信息
         InputStream inputStream = Resources.getResourceAsStream(resource);
+        // 3.根据配置信息，生成sqlSessionFactory对象，相当于连接池
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        SqlSession sqlSession=sqlSessionFactory.openSession();
-        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        //生成的SQL语句
-        //==> Preparing: delete from user where id in ( ? , ? , ? , ? )
-        //==> Parameters: 47(Integer), 49(Integer), 50(Integer), 51(Integer)
-        userMapper.deleteByArray(new int[]{47, 49, 50, 51});
-        sqlSession.commit();
+        // 4.从连接池获取连接
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        // 5.获取执行sql语句的对象
+        OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+        // 6.调用SQL语句
+        List<Order> orderList = orderMapper.selectAll();
+        // 7.释放资源
         sqlSession.close();
+        orderList.forEach(System.out::println);
     }
 
-    @Test
-    public void test10() throws IOException{
-        String resource = "mybatis-config.xml";
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        SqlSession sqlSession=sqlSessionFactory.openSession();
-        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        List<User> userList = userMapper.selectBySex(1);
-        userList.forEach(System.out::println);
-        sqlSession.close();
-    }
-
-    @Test
-    public void test11() throws IOException{
-        String resource = "mybatis-config.xml";
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        SqlSession sqlSession=sqlSessionFactory.openSession();
-        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        List<User> userList = userMapper.selectBySQL();
-        userList.forEach(System.out::println);
-        sqlSession.close();
-    }
-
-    @Test
-    public void test12() throws IOException{
-        String resource = "mybatis-config.xml";
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        SqlSession sqlSession=sqlSessionFactory.openSession();
-        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        List<String> names = userMapper.selectField("旧厂街");
-        names.forEach(System.out::println);
-        sqlSession.close();
-    }
-
-    @Test
-    public void test13() throws IOException{
-        String resource = "mybatis-config.xml";
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        SqlSession sqlSession=sqlSessionFactory.openSession();
-        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        List<String> names = userMapper.selectField("旧厂街");
-        names.forEach(System.out::println);
-        sqlSession.close();
-    }
 }
 
 

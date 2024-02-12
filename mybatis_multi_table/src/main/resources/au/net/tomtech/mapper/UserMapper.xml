@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="au.net.tomtech.mapper.UserMapper">
+    <select id="selectAll" resultType="user">
+        select * from user;
+    </select>
+
+    <!--
+        resultMap标签:当数据库字段名和类的成员变量名不一致的时候，作为封装对象的映射关系使用
+        包括，属性中有别的对象成员变量的时候
+        id:唯一标识
+        做多表查询的时候，最好把每个字段都映射上，避免出现字段名相同的情况
+
+        id标签:主键字段 column数据库的字段名 property类的成员变量名
+        result标签:除主键之外的字段
+
+        association标签:做一对一关联映射
+        property属性:类的成员变量名
+        resultMap属性:成员变量对应的对象映射关系
+
+        collection标签:做一对多关系映射
+    -->
+    <!--user表与user类的映射-->
+    <resultMap id="UserMap" type="User">
+        <id column="id" property="id" />
+        <result column="username" property="username" />
+        <result column="birthday" property="birthday" />
+        <result column="sex" property="sex" />
+        <result column="address" property="address" />
+        <!--1对1关系的映射-->
+        <association property="infoData" resultMap="UserInfoMap" />
+        <!--一对多映射orderList信息-->
+        <collection property="orderList" resultMap="OrderMap" />
+        <!--对应roleList的信息-->
+        <collection property="roleList" resultMap="RoleMap" />
+
+    </resultMap>
+
+    <!--Role表与Role类的映射-->
+    <resultMap id="RoleMap" type="Role" >
+        <id column="role_id" property="roleId" />
+        <result column="role_name" property="roleName" />
+        <result column="role_detail" property="roleDetail" />
+    </resultMap>
+
+    <!--Order表与Order类的映射-->
+    <resultMap id="OrderMap" type="Order">
+        <id column="oid" property="oId" />
+        <result column="user_id" property="userId" />
+        <result column="number" property="number" />
+        <result column="create_time" property="createTime" />
+        <result column="note" property="note" />
+    </resultMap>
+
+    <!--UserInfo表与UserInfo类的映射-->
+    <resultMap id="UserInfoMap" type="UserInfo" >
+        <id column="id" property="id" />
+        <result column="height" property="height" />
+        <result column="weight" property="weight" />
+        <result column="married" property="married" />
+    </resultMap>
+
+    <select id="selectUserAndInfoById" resultMap="UserMap">
+        select * from user inner join user_info on user.id = user_info.id where user.id = #{id};
+    </select>
+
+    <!--根据用户id查询用户信息及其订单信息-->
+    <select id="selectUserAndOrderById" resultMap="UserMap">
+        SELECT * FROM USER INNER JOIN `order` ON
+            user.id = `order`.`user_id` WHERE user.id = #{id};
+    </select>
+
+
+</mapper>
