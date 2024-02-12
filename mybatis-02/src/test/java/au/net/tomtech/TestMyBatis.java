@@ -1,8 +1,10 @@
 package au.net.tomtech;
 
 import au.net.tomtech.mapper.EmpMapper;
+import au.net.tomtech.mapper.OrderMapper;
 import au.net.tomtech.mapper.UserMapper;
 import au.net.tomtech.pojo.Emp;
+import au.net.tomtech.pojo.Order;
 import au.net.tomtech.pojo.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -140,6 +142,25 @@ public class TestMyBatis {
         sqlSession.close();
     }
 
+    @Test
+    public void test09() throws IOException {
+        // 测试一下MyBatis框架的搭建情况
+        // 1.标记mybatis的配置环境
+        String resource = "mybatis-config.xml";
+        // 2.加载配置环境的信息
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        // 3.根据配置信息，生成sqlSessionFactory对象，相当于连接池
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        // 4.从连接池获取连接
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        // 5.获取执行sql语句的对象
+        OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+        // 6.调用SQL语句
+        List<Order> orderList = orderMapper.selectAll();
+        // 7.释放资源
+        sqlSession.close();
+        orderList.forEach(System.out::println);
+    }
 
 }
 
