@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+mapper根标签，namespace写上对应的是哪一个接口的映射关系
+select标签:专门对应查询方法的
+id:标记唯一的方法名
+resultType:返回结果对象，如果是集合如List，不用写集合，写里面的对象
+            包名+类名
+-->
+<mapper namespace="com.itheima.mapper.OrderMapper">
+
+<!--
+解决数据库字段名和类的成员变量名不一致的时候，查询结果 无法封装成功的问题
+方案一:给不一致的字段取别名  select o_id oId,user_id userId,number,create_time createTime,note from `order`;
+方案二:在mybati-config.xml的settings配置全局的驼峰命名的映射关系
+方案三:使用resultMap替代resultType
+            id:唯一标识
+            type:最终封装的对象类型
+        id标签:主键字段的映射关系, column：数据库的字段名 property：类的成员变量名
+        result标签:普通的字段映射关系，column：数据库的字段名 property：类的成员变量名
+resultType:只能放在数据库字段名和类的成员变量名一致的时候使用
+
+-->
+
+    <resultMap id="OrderMap" type="Order" >
+        <id column="o_id" property="oId"/>
+        <result column="user_id" property="userId" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <select id="selectAll" resultMap="OrderMap">
+        select * from `order`;
+    </select>
+</mapper>
