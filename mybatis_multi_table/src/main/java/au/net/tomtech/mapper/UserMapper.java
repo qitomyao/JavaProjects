@@ -14,11 +14,11 @@ public interface UserMapper {
     List<User> selectAll();
 
     // 2.查询用户及其扩展信息
-//    User selectUserAndInfoById(int id);
-//
-//    // 3.一对多 查询用户及其名下的订单信息
-//    User selectUserAndOrderById(int id);
-//
+    User selectUserAndInfoById(int id);
+
+    // 3.一对多 查询用户及其名下的订单信息
+    User selectUserAndOrderById(int id);
+
 //    // 4.多对多，从用户角度看，查询用户及其角色信息
 //    User selectUserAndRoleById(int id);
 

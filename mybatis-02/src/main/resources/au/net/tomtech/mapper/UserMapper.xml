@@ -93,6 +93,74 @@ select标签, 专门对应查询方法
         </set>
         where id = #{id};
     </update>
+
+    <!--
+        如果用户需要批量删除数据的时候, 直接id=#{id}是不够用的
+        foreach标签: 可以遍历数组或者集合
+        collection: 被遍历的数组或者集合的名字
+        item: 表示遍历之后, 每一个参数的变量名
+        seperator: 遍历的每一个参数之间的间隔逗号
+        open: 遍历前添加的内容
+        close: 遍历后添加的内容
+        #{变量名}: item的值
+    -->
+    <delete id="deleteByArray">
+        delete from user where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+    <!--
+        when: 匹配一个条件
+        otherwise: 所有条件不匹配时执行
+    -->
+    <select id="selectBySex" resultType="User">
+        select * from user
+        <where>
+            <choose>
+                <when test = "sex == 0">
+                    sex = '男'
+                </when>
+                <when test = "sex == 1">
+                    sex = '女'
+                </when>
+                <otherwise>
+                    sex = '女'
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <!--  sql标签:放抽取出来的数据
+    id:引入的时候的唯一标识
+    include标签:可以引入sql标签抽取的代码
+    refid:引入的sql标签是哪一个-->
+    <sql id="userInfo" >
+        id,username,birthday,sex,address
+    </sql>
+    <select id="selectBySQL" resultType="User">
+        select
+        <include refid="userInfo" />
+        from user
+    </select>
+
+
+    <select id="selectField" resultType="String">
+        SELECT username FROM user where id in (select id from user where address= #{address});
+    </select>
+
+    <select id="selectField2" resultType="String">
+        SELECT username FROM user
+        <where>
+            id in (select id from user
+            <where>
+                <if test="address !=null and username !=''">
+                    address = #{address}
+                </if>
+            </where>
+            )
+        </where>
+    </select>
 </mapper>
 
 

@@ -5,17 +5,17 @@ import java.util.List;
 
 // 封装User表的数据的实体类
 public class User {
-   private Integer id;
-   private String username;
-   private Date birthday;  //java.sql.Date;
-   private String sex;
-   private String address;
+    private Integer id;
+    private String username;
+    private Date birthday;  //java.sql.Date;
+    private String sex;
+    private String address;
 
-   // 一对一查询，把其中的一个对象作为属性放到另一个对象里面
+    // 一对一查询，把其中的一个对象作为属性放到另一个对象里面
     // 每次添加属性的时候，删除原有的javabean，重新生成一下
-   private UserInfo infoData;
+    private UserInfo infoData;
 
-   // 添加order的对象属性，一对多
+    // 添加order的对象属性，一对多
     private List<Order> orderList;
 
     // 添加Role的对象属性
@@ -38,6 +38,7 @@ public class User {
 
     /**
      * 获取
+     *
      * @return id
      */
     public Integer getId() {
@@ -46,6 +47,7 @@ public class User {
 
     /**
      * 设置
+     *
      * @param id
      */
     public void setId(Integer id) {
@@ -54,6 +56,7 @@ public class User {
 
     /**
      * 获取
+     *
      * @return username
      */
     public String getUsername() {
@@ -62,6 +65,7 @@ public class User {
 
     /**
      * 设置
+     *
      * @param username
      */
     public void setUsername(String username) {
@@ -70,6 +74,7 @@ public class User {
 
     /**
      * 获取
+     *
      * @return birthday
      */
     public Date getBirthday() {
@@ -78,6 +83,7 @@ public class User {
 
     /**
      * 设置
+     *
      * @param birthday
      */
     public void setBirthday(Date birthday) {
@@ -86,6 +92,7 @@ public class User {
 
     /**
      * 获取
+     *
      * @return sex
      */
     public String getSex() {
@@ -94,6 +101,7 @@ public class User {
 
     /**
      * 设置
+     *
      * @param sex
      */
     public void setSex(String sex) {
@@ -102,6 +110,7 @@ public class User {
 
     /**
      * 获取
+     *
      * @return address
      */
     public String getAddress() {
@@ -110,6 +119,7 @@ public class User {
 
     /**
      * 设置
+     *
      * @param address
      */
     public void setAddress(String address) {
@@ -118,6 +128,7 @@ public class User {
 
     /**
      * 获取
+     *
      * @return infoData
      */
     public UserInfo getInfoData() {
@@ -126,6 +137,7 @@ public class User {
 
     /**
      * 设置
+     *
      * @param infoData
      */
     public void setInfoData(UserInfo infoData) {
@@ -134,6 +146,7 @@ public class User {
 
     /**
      * 获取
+     *
      * @return orderList
      */
     public List<Order> getOrderList() {
@@ -142,6 +155,7 @@ public class User {
 
     /**
      * 设置
+     *
      * @param orderList
      */
     public void setOrderList(List<Order> orderList) {
@@ -150,6 +164,7 @@ public class User {
 
     /**
      * 获取
+     *
      * @return roleList
      */
     public List<Role> getRoleList() {
@@ -158,6 +173,7 @@ public class User {
 
     /**
      * 设置
+     *
      * @param roleList
      */
     public void setRoleList(List<Role> roleList) {

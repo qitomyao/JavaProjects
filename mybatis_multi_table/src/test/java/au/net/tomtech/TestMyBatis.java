@@ -25,4 +25,31 @@ public class TestMyBatis {
         sqlSession.close();
         System.out.println(users);
     }
+
+    @Test
+    public void test02() throws IOException{
+        String resource ="mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession sqlSession=sqlSessionFactory.openSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        User user = userMapper.selectUserAndInfoById(1);
+        System.out.println(user);
+        System.out.println(user.getInfoData());
+        sqlSession.close();
+    }
+
+    @Test
+    public void test03() throws IOException {
+        String resource ="mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession sqlSession=sqlSessionFactory.openSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        User user = userMapper.selectUserAndOrderById(1);
+        System.out.println(user);
+        // 单独打印orderList的信息
+        user.getOrderList().forEach(System.out::println);
+        sqlSession.close();
+    }
 }
