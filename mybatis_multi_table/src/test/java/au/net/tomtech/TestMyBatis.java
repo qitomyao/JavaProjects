@@ -52,4 +52,18 @@ public class TestMyBatis {
         user.getOrderList().forEach(System.out::println);
         sqlSession.close();
     }
+
+    @Test
+    public void test04() throws IOException {
+        String resource ="mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession sqlSession=sqlSessionFactory.openSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        User user = userMapper.selectUserAndRoleById(1);
+        System.out.println(user);
+        // 单独打印RoleList的信息
+        user.getRoleList().forEach(System.out::println);
+        sqlSession.close();
+    }
 }

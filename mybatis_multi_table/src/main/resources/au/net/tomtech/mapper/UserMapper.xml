@@ -72,5 +72,11 @@
             user.id = `order`.`user_id` WHERE user.id = #{id};
     </select>
 
-
+    <!--从用户角度，根据id查询用户信息及其角色信息-->
+    <select id="selectUserAndRoleById" resultMap="UserMap">
+        SELECT * FROM USER
+             INNER JOIN user_role ON user.id = user_role.`user_id`
+             INNER JOIN role ON  user_role.`role_id`  = role.`role_id`
+        WHERE user.id = #{id};
+    </select>
 </mapper>

@@ -29,13 +29,11 @@
         <result column="birthday" property="birthday" />
         <result column="sex" property="sex" />
         <result column="address" property="address" />
-        <!--1对1关系的映射-->
-        <association property="infoData" resultMap="UserInfoMap" />
+        <association property="infoData" select="selectInfoById" column="id" fetchType="eager" />
         <!--一对多映射orderList信息-->
         <collection property="orderList" resultMap="OrderMap" />
         <!--对应roleList的信息-->
         <collection property="roleList" resultMap="RoleMap" />
-
     </resultMap>
 
     <!--Role表与Role类的映射-->
@@ -62,21 +60,11 @@
         <result column="married" property="married" />
     </resultMap>
 
-    <select id="selectUserAndInfoById" resultMap="UserMap">
-        select * from user inner join user_info on user.id = user_info.id where user.id = #{id};
+    <select id="selectById" resultMap="UserMap">
+        select * from user where id = #{id};
+    </select>
+    <select id="selectInfoById" resultType="UserInfo">
+        select * from user_info where id=#{id}
     </select>
 
-    <!--根据用户id查询用户信息及其订单信息-->
-    <select id="selectUserAndOrderById" resultMap="UserMap">
-        SELECT * FROM USER INNER JOIN `order` ON
-            user.id = `order`.`user_id` WHERE user.id = #{id};
-    </select>
-
-    <!--从用户角度，根据id查询用户信息及其角色信息-->
-    <select id="selectUserAndRoleById" resultMap="UserMap">
-        SELECT * FROM USER
-             INNER JOIN user_role ON user.id = user_role.`user_id`
-             INNER JOIN role ON  user_role.`role_id`  = role.`role_id`
-        WHERE user.id = #{id};
-    </select>
 </mapper>

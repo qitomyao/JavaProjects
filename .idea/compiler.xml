@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="mybatis-02" />
         <module name="maven-project" />
+        <module name="mybatis_multi_table01" />
         <module name="mybatis_multi_table" />
       </profile>
     </annotationProcessing>
