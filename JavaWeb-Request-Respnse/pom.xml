@@ -44,5 +44,10 @@
       <!--provided: 表示开发测试使用, 不打进war包中-->
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.6</version>
+    </dependency>
   </dependencies>
 </project>
