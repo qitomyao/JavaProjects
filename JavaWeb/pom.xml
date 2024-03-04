@@ -5,7 +5,7 @@
   <groupId>au.net.tomtech</groupId>  
   <artifactId>JavaWeb</artifactId>  
   <version>1.0-SNAPSHOT</version>  
-  <packaging>war</packaging>
+  <packaging>war</packaging>  
   <properties> 
     <maven.compiler.source>21</maven.compiler.source>  
     <maven.compiler.target>21</maven.compiler.target>  
@@ -32,18 +32,11 @@
       <version>3.5.5</version> 
     </dependency>  
     <dependency> 
-      <groupId>au.net.tomtech</groupId>  
-      <artifactId>mybatis-02</artifactId>  
-      <version>1.0-SNAPSHOT</version>  
-      <scope>compile</scope> 
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>3.1.0</version>
-      <!--provided: 表示开发测试使用, 不打进war包中-->
-      <scope>provided</scope>
-    </dependency>
-
+      <groupId>javax.servlet</groupId>  
+      <artifactId>javax.servlet-api</artifactId>  
+      <version>3.1.0</version>  
+      <!--provided: 表示开发测试使用, 不打进war包中-->  
+      <scope>provided</scope> 
+    </dependency> 
   </dependencies> 
 </project>
