@@ -6,8 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="JavaWeb" />
         <module name="JavaWeb-Request-Respnse" />
+        <module name="JavaWeb-JSP" />
+        <module name="JavaWeb" />
         <module name="mybatis-01" />
       </profile>
     </annotationProcessing>

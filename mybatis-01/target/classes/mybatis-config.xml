@@ -14,7 +14,7 @@
         alias: 起的别名
     -->
     <typeAliases>
-<!--        <typeAlias type="au.net.tomtech.pojo.User" alias="User" />-->
+    <!--  <typeAlias type="au.net.tomtech.pojo.User" alias="User" />-->
         <package name="au.net.tomtech.pojo"/>
     </typeAliases>
 	
