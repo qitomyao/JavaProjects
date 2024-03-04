@@ -19,20 +19,22 @@ public class LoginServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        SqlSession sqlSession = MyBatisUtils.openSqlSession();
-        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        User user = userMapper.select(username, password);
-        //解决中文响应
-        response.setContentType("text/html; charset=utf-8");
-        PrintWriter writer = response.getWriter();
-        if(user == null)
-        {
-            writer.write("登陆失败！");
-        }
-        else
-        {
-            writer.write("登陆成功！");
-        }
+        System.out.println(username);
+        System.out.println(password);
+//        SqlSession sqlSession = MyBatisUtils.openSqlSession();
+//        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+//        User user = userMapper.select(username, password);
+//        //解决中文响应
+//        response.setContentType("text/html; charset=utf-8");
+//        PrintWriter writer = response.getWriter();
+//        if(user == null)
+//        {
+//            writer.write("登陆失败！");
+//        }
+//        else
+//        {
+//            writer.write("登陆成功！");
+//        }
     }
 
     @Override
