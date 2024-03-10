@@ -6,18 +6,21 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="JavaWeb-Request-Respnse" />
         <module name="JavaWeb-JSP" />
+        <module name="JavaWeb-Request-Respnse" />
+        <module name="day25-brand" />
         <module name="JavaWeb" />
         <module name="mybatis-01" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="maven-project" target="1.8" />
-      <module name="mybatis-02" target="1.8" />
+      <module name="HTML" target="21" />
+      <module name="java_web" target="21" />
+      <module name="maven-project" target="21" />
+      <module name="mybatis-02" target="17" />
       <module name="mybatis-02-crud" target="1.8" />
-      <module name="mybatis_multi_table" target="1.8" />
-      <module name="mybatis_multi_table01" target="1.8" />
+      <module name="mybatis_multi_table" target="21" />
+      <module name="mybatis_multi_table01" target="21" />
     </bytecodeTargetLevel>
   </component>
 </project>

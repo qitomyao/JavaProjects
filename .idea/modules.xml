@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/HTML/HTML.iml" filepath="$PROJECT_DIR$/HTML/HTML.iml" />
       <module fileurl="file://$PROJECT_DIR$/JavaProjects.iml" filepath="$PROJECT_DIR$/JavaProjects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../java_web/java_web.iml" filepath="$PROJECT_DIR$/../java_web/java_web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/maven-project/maven-project.iml" filepath="$PROJECT_DIR$/maven-project/maven-project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis-02/mybatis-02.iml" filepath="$PROJECT_DIR$/mybatis-02/mybatis-02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis_multi_table/mybatis_multi_table.iml" filepath="$PROJECT_DIR$/mybatis_multi_table/mybatis_multi_table.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis_multi_table01/mybatis_multi_table01.iml" filepath="$PROJECT_DIR$/mybatis_multi_table01/mybatis_multi_table01.iml" />
     </modules>
   </component>
 </project>
