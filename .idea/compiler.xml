@@ -11,6 +11,7 @@
         <module name="day25-brand" />
         <module name="JavaWeb" />
         <module name="mybatis-01" />
+        <module name="day26-cookie-session" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
